@@ -25,17 +25,21 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
+ * @SPI 注解修饰，默认使用hessian2序列化算法
  * Serialization strategy interface that specifies a serializer. (SPI, Singleton, ThreadSafe)
  *
  * The default extension is hessian2 and the default serialization implementation of the dubbo protocol.
  * <pre>
  *     e.g. &lt;dubbo:protocol serialization="xxx" /&gt;
  * </pre>
+ *
+ * @author dubbo
  */
 @SPI("hessian2")
 public interface Serialization {
 
     /**
+     * 获取ContentType的ID值，是一个byte类型的值，唯一确定一个算法
      * Get content type unique id, recommended that custom implementations use values greater than 20.
      *
      * @return content type id
@@ -43,13 +47,14 @@ public interface Serialization {
     byte getContentTypeId();
 
     /**
-     * Get content type
+     * 每种序列化算法都对应一个ContentType，该方法用于获取ContentType
      *
      * @return content type
      */
     String getContentType();
 
     /**
+     * 创建一个ObjectOutput对象，ObjectOutput负责实现序列化的功能，即将Java对象转化为字节序列
      * Get a serialization implementation instance
      *
      * @param url URL address for the remote service
@@ -61,6 +66,7 @@ public interface Serialization {
     ObjectOutput serialize(URL url, OutputStream output) throws IOException;
 
     /**
+     * 创建一个ObjectInput对象，ObjectInput负责实现反序列化的功能，即将字节序列转换成Java对象
      * Get a deserialization implementation instance
      *
      * @param url URL address for the remote service

@@ -29,6 +29,7 @@ public class Hessian2ObjectOutput implements ObjectOutput {
     private final Hessian2Output output;
 
     public Hessian2ObjectOutput(OutputStream os) {
+        // 初始化Hessian2Output对象
         output = new Hessian2Output(os);
         output.setSerializerFactory(Hessian2SerializerFactory.INSTANCE);
     }

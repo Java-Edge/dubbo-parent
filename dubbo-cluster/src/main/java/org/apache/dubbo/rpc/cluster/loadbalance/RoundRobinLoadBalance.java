@@ -61,7 +61,7 @@ public class RoundRobinLoadBalance extends AbstractLoadBalance {
         }
     }
 
-    private ConcurrentMap<String, ConcurrentMap<String, WeightedRoundRobin>> methodWeightMap = new ConcurrentHashMap<String, ConcurrentMap<String, WeightedRoundRobin>>();
+    private ConcurrentMap<String, ConcurrentMap<String, WeightedRoundRobin>> methodWeightMap = new ConcurrentHashMap<>();
     private AtomicBoolean updateLock = new AtomicBoolean();
     
     /**

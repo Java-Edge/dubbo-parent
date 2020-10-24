@@ -28,13 +28,24 @@ import java.io.OutputStream;
 
 import static org.apache.dubbo.common.serialize.Constants.NATIVE_HESSIAN_SERIALIZATION_ID;
 
+/**
+ * @author dubbo
+ */
 public class Hessian2Serialization implements Serialization {
 
+    /**
+     * hessian2的ContentType ID
+     * @return
+     */
     @Override
     public byte getContentTypeId() {
         return NATIVE_HESSIAN_SERIALIZATION_ID;
     }
 
+    /**
+     * hessian2的ContentType
+     * @return
+     */
     @Override
     public String getContentType() {
         return "x-application/native-hessian";
